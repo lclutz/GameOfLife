@@ -47,9 +47,6 @@ public class Renderer {
 		render();
 	}
 
-	/**
-	 * Set canvas width and height appropriate for the users screen size.
-	 */
 	private static void getBestSize() {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = toolkit.getScreenSize();
@@ -63,9 +60,6 @@ public class Renderer {
 		canvasHeight = factor * GAME_HEIGHT;
 	}
 
-	/**
-	 * Render the game graphics in a loop in a dedicated thread
-	 */
 	public static void render() {
 
 		GraphicsConfiguration gc = canvas.getGraphicsConfiguration();
@@ -77,7 +71,6 @@ public class Renderer {
 
 		Graphics g = vImage.getGraphics();
 
-		// Render stuff
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
