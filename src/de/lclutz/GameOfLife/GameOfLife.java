@@ -5,7 +5,8 @@ public class GameOfLife {
 	private static int GRIDSIZE = 25;
 
 	public static boolean[][] grid = new boolean[GRIDSIZE][GRIDSIZE];
-
+	public static int steps = 0;
+	
 	public static void main(String[] args) {
 		grid[5][5] = true;
 		grid[5][6] = true;
@@ -50,6 +51,7 @@ public class GameOfLife {
 			}
 		}
 		grid = newGrid;
+		steps++;
 		Renderer.render();
 	}
 
@@ -70,6 +72,7 @@ public class GameOfLife {
 				grid[row][column] = false;
 			}
 		}
+		steps = 0;
 		Renderer.render();
 	}
 
@@ -82,6 +85,7 @@ public class GameOfLife {
 					grid[row][column] = true;
 			}
 		}
+		steps = 0;
 		Renderer.render();
 	}
 	

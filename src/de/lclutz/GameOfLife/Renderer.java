@@ -86,6 +86,7 @@ public class Renderer {
 		g.drawString("[S] to step", 260, 50);
 		g.drawString("[C] to clear", 260, 65);
 		g.drawString("[R] to set random values", 260, 80);
+		g.drawString("Steps: " + GameOfLife.steps, 260, 100);
 
 		// Draw grid
 		g.setColor(Color.DARK_GRAY);
