@@ -18,6 +18,7 @@ public class Renderer {
 
 	private static int canvasWidth = 0;
 	private static int canvasHeight = 0;
+	private static int factor = 1;
 
 	private static final int GAME_WIDTH = 400;
 	private static final int GAME_HEIGHT = 250;
@@ -43,6 +44,7 @@ public class Renderer {
 
 		canvas.addKeyListener(new Input());
 		canvas.requestFocus();
+		canvas.addMouseListener(new Input());
 		frame.setVisible(true);
 		render();
 	}
@@ -54,10 +56,14 @@ public class Renderer {
 		int widthRatio = (int) Math.floor(screenSize.getWidth() / GAME_WIDTH);
 		int heightRatio = (int) Math.floor(screenSize.getHeight() / GAME_HEIGHT);
 
-		int factor = Math.min(widthRatio, heightRatio);
+		factor = Math.min(widthRatio, heightRatio);
 
 		canvasWidth = factor * GAME_WIDTH;
 		canvasHeight = factor * GAME_HEIGHT;
+	}
+
+	public static int[] convertToGameCoordinates(int[] windowCoordinates) {
+		return new int[] { (windowCoordinates[0] / factor) / 10, (windowCoordinates[1] / factor) / 10 };
 	}
 
 	public static void render() {
@@ -87,7 +93,7 @@ public class Renderer {
 			g.drawLine(0, i * 10, 250, i * 10);
 			g.drawLine(i * 10, 0, i * 10, 250);
 		}
-		
+
 		// Draw current game state
 		int rowNumber = 0;
 		int fieldNumber = 0;
@@ -97,7 +103,7 @@ public class Renderer {
 					g.setColor(Color.GREEN);
 				else
 					g.setColor(Color.BLACK);
-				g.fillRect(fieldNumber*10 + 1, rowNumber*10 + 1, 9, 9);
+				g.fillRect(fieldNumber * 10 + 1, rowNumber * 10 + 1, 9, 9);
 				fieldNumber++;
 			}
 			rowNumber++;

@@ -84,5 +84,18 @@ public class GameOfLife {
 		}
 		Renderer.render();
 	}
+	
+	public static void handleMouseClick(int x, int y) {
+		int[] gameCoordinates = Renderer.convertToGameCoordinates(new int[] {x, y});
+		x = gameCoordinates[0];
+		y = gameCoordinates[1];
+		if ((x >= 0 && x < GRIDSIZE) && (y >= 0 && y < GRIDSIZE)) {
+			if (grid[y][x])
+				grid[y][x] = false;
+			else 
+				grid[y][x] = true;
+			Renderer.render();
+		}
+	}
 
 }
